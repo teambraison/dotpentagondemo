@@ -51,10 +51,30 @@
 
 @end
 
+@protocol DotRequestLatestMessageDelegate
+
+- (void)dotDidReceivedLatestMessage:(NSDictionary *)data;
+
+@end
+
+@interface DotRequestLatestMessageAPI : DotAPI
+
+- (void)requestLatestMessageWith:(NSString *)senderid AndContact:(NSString *)contactid;
+
+@property (weak) id<DotRequestLatestMessageDelegate> delegate;
+
+@end
+
+@interface DotSendMessageAPI: DotAPI
+
+- (void)sendMessageWithSession:(NSString *)sessionid AndSenderID:(NSString *)senderid AndReceiver:(NSString *)receiverid AndMessage:(NSString *)message;
+
+@end
 
 
 
-@protocol DotRequestAllUsersDelegate <NSObject>
+
+@protocol DotRequestAllUsersDelegate
 
 - (void)dotDidReceiveAllUsers:(NSDictionary *)data;
 

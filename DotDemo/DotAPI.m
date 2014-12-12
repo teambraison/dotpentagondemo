@@ -167,6 +167,49 @@
     [delegate dotDidReceivedChatMessages:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]];
 }
 
+@end
+
+@implementation DotRequestLatestMessageAPI
+
+@synthesize delegate;
+
+- (void)requestLatestMessageWith:(NSString *)senderid AndContact:(NSString *)contactid
+{
+    NSLog(@"Requesting latest message from %@", senderid);
+    NSString *api = @"/api/message/latest";
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+ //   [parameters setObject:sessionid forKey:@"session_id"];
+    [parameters setObject:senderid forKey:@"user_id"];
+    [parameters setObject:contactid forKey:@"contact_id"];
+    
+    [self startRequest:api WithData:parameters];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"Receiving data from latest message connection");
+    [delegate dotDidReceivedLatestMessage:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]];
+    
+}
+
+@end
+
+@implementation DotSendMessageAPI
+
+
+- (void)sendMessageWithSession:(NSString *)sessionid AndSenderID:(NSString *)senderid AndReceiver:(NSString *)receiverid AndMessage:(NSString *)message
+{
+    NSString *api = @"/api/message/send";
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    //   [parameters setObject:sessionid forKey:@"session_id"];
+    [parameters setObject:sessionid forKey:@"session_id"];
+    [parameters setObject:senderid forKey:@"sender_id"];
+    [parameters setObject:receiverid forKey:@"receiver_id"];
+    [parameters setObject:message forKey:@"message"];
+    [self startRequest:api WithData:parameters];
+    
+    
+}
 
 @end
 

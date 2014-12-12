@@ -75,16 +75,21 @@
 {
     NSLog(@"Reciving data from login api at ContactViewController");
     NSLog(@"Verifying data: %@", data);
-    NSString *userid = [data objectForKey:@"user_id"];
-    NSString *sessionid = [data objectForKey:@"user_sessionid"];
-    account.user_id = [NSString stringWithString:userid];
-    account.session_id = [NSString stringWithString:sessionid];
-    account.isAuthenticated = true;
-    account.user_name = AUTO_AUTHENICATION_USERNAME;
+    if(data != nil) {
+        NSString *userid = [data objectForKey:@"user_id"];
+        NSString *sessionid = [data objectForKey:@"user_sessionid"];
+        account.user_id = [NSString stringWithString:userid];
+        account.session_id = [NSString stringWithString:sessionid];
+        account.isAuthenticated = true;
+        account.user_name = AUTO_AUTHENICATION_USERNAME;
+        [userRequestAPI requestAllUsers:sessionid];
+
+        NSLog(@"Login data is intact");
+    } else {
+        NSLog(@"Login data is null");
+    }
     
     NSLog(@"Login Account username: %@", account.user_name);
-    
-    [userRequestAPI requestAllUsers:sessionid];
     
 //    for(int i = 0; i < incomingData.count; i++) {
 //        NSDictionary *thisContact = [incomingData objectAtIndex:i];
@@ -99,6 +104,7 @@
 //    }
 //    [contactsmenu reloadData];
 }
+
 
 - (void)dotDidReceiveAllUsers:(NSDictionary *)data
 {

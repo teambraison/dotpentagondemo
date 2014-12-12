@@ -14,12 +14,13 @@
 #define SERVICE_UUID @"C48A1473-D2E6-4678-AFC9-B610603BFD72"
 #define CHARACTERISTIC_UUID @"5810FA38-7699-4226-AFB2-D3B3AA025592"
 
-
 @implementation BLEManager
 {
     LGCentralManager *manager;
     LGPeripheral *selectedPeripheral;
 }
+
+@synthesize delegate;
 
 + (BLEManager *)sharedInstance
 {
@@ -63,6 +64,7 @@
     [peripheral connectWithCompletion:^(NSError *error) {
         if(error == nil) {
             selectedPeripheral = peripheral;
+            [delegate bleDidConnectWithDevice];
             NSLog(@"Connected to %@", selectedPeripheral.name);
             
         } else {

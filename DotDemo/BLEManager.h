@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "LGBluetooth.h"
 
+@protocol BLEManagerUpdateDelegate
+
+- (void)bleDidConnectWithDevice;
+
+@end
+
 @interface BLEManager : NSObject
 
 - (void)startScan;
@@ -16,5 +22,7 @@
 - (void)writeData:(NSString *)myData;
 
 + (BLEManager *)sharedInstance;
+
+@property (weak) id <BLEManagerUpdateDelegate> delegate;
 
 @end

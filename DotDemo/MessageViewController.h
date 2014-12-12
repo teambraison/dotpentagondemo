@@ -14,7 +14,7 @@
 #import "Message.h"
 #import "BLEManager.h"
 #import "SocketIO.h"
-@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, SocketIODelegate, SocketIOTransportDelegate>
+@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, SocketIODelegate, DotRequestLatestMessageDelegate>
 {
     BLEManager *manager;
 }

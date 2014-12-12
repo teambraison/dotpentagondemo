@@ -53,6 +53,9 @@
 		5D998D991A3A315500B5FDB9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D981A3A315500B5FDB9 /* Security.framework */; };
 		5D998D9B1A3A315F00B5FDB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D9A1A3A315F00B5FDB9 /* Foundation.framework */; };
 		5D998DA01A3A31A200B5FDB9 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D9F1A3A31A200B5FDB9 /* SRWebSocket.m */; };
+		5D998DA71A3ABDA400B5FDB9 /* BusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998DA61A3ABDA400B5FDB9 /* BusViewController.m */; };
+		5D998DAB1A3ABE7000B5FDB9 /* BusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998DA91A3ABE7000B5FDB9 /* BusItemView.m */; };
+		5D998DAC1A3ABE7000B5FDB9 /* BusItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D998DAA1A3ABE7000B5FDB9 /* BusItemView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +149,11 @@
 		5D998D9D1A3A31A200B5FDB9 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		5D998D9E1A3A31A200B5FDB9 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		5D998D9F1A3A31A200B5FDB9 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		5D998DA51A3ABDA400B5FDB9 /* BusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusViewController.h; sourceTree = "<group>"; };
+		5D998DA61A3ABDA400B5FDB9 /* BusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusViewController.m; sourceTree = "<group>"; };
+		5D998DA81A3ABE7000B5FDB9 /* BusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusItemView.h; sourceTree = "<group>"; };
+		5D998DA91A3ABE7000B5FDB9 /* BusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusItemView.m; sourceTree = "<group>"; };
+		5D998DAA1A3ABE7000B5FDB9 /* BusItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusItemView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,6 +289,7 @@
 		5D998D261A39C29C00B5FDB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D998DA11A3ABD4800B5FDB9 /* Bus */,
 				5D998D691A3A0CDD00B5FDB9 /* Messaging */,
 				5D998D601A39FA9C00B5FDB9 /* Keyboard */,
 				5D998D5C1A39F6B700B5FDB9 /* Login */,
@@ -432,6 +441,18 @@
 			path = SocketRocket;
 			sourceTree = "<group>";
 		};
+		5D998DA11A3ABD4800B5FDB9 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				5D998DA51A3ABDA400B5FDB9 /* BusViewController.h */,
+				5D998DA61A3ABDA400B5FDB9 /* BusViewController.m */,
+				5D998DA81A3ABE7000B5FDB9 /* BusItemView.h */,
+				5D998DA91A3ABE7000B5FDB9 /* BusItemView.m */,
+				5D998DAA1A3ABE7000B5FDB9 /* BusItemView.xib */,
+			);
+			name = Bus;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -524,6 +545,7 @@
 				5D998D451A39DDFF00B5FDB9 /* bus_icon.png in Resources */,
 				5D998D491A39DDFF00B5FDB9 /* time_icon.png in Resources */,
 				5D998D461A39DDFF00B5FDB9 /* msg_icon.png in Resources */,
+				5D998DAC1A3ABE7000B5FDB9 /* BusItemView.xib in Resources */,
 				5D998D3C1A39DCAB00B5FDB9 /* MainMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -552,6 +574,7 @@
 				5D998D701A3A104E00B5FDB9 /* MessageItemCell.m in Sources */,
 				5D998D881A3A2E8C00B5FDB9 /* SocketIOPacket.m in Sources */,
 				5D998D231A39C29000B5FDB9 /* LGPeripheral.m in Sources */,
+				5D998DAB1A3ABE7000B5FDB9 /* BusItemView.m in Sources */,
 				5D998D6C1A3A0D0C00B5FDB9 /* MessageViewController.m in Sources */,
 				5D998D891A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m in Sources */,
 				5D998D341A39DAF000B5FDB9 /* MainMenuViewController.m in Sources */,
@@ -562,6 +585,7 @@
 				5D998D3B1A39DCAB00B5FDB9 /* MainMenuTableViewCell.m in Sources */,
 				5D998D8A1A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m in Sources */,
 				5D998D211A39C29000B5FDB9 /* LGCentralManager.m in Sources */,
+				5D998DA71A3ABDA400B5FDB9 /* BusViewController.m in Sources */,
 				5D998D301A39C6AC00B5FDB9 /* BLEManager.m in Sources */,
 				5D998D201A39C29000B5FDB9 /* CBUUID+StringExtraction.m in Sources */,
 				5D998D521A39E97100B5FDB9 /* ContactViewController.m in Sources */,

@@ -11,6 +11,8 @@
 #import "ContactViewController.h"
 #import "BLEManager.h"
 
+#import "BusViewController.h"
+
 @interface MainMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     BLEManager *manager;

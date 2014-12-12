@@ -54,12 +54,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     if(indexPath.row == 1) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ContactViewController *contactVC = [storyboard instantiateViewControllerWithIdentifier:@"contacts"];
         [self presentViewController:contactVC animated:true completion:nil];
     } else if(indexPath.row == 3) {
         [manager startScan];
+    } else if(indexPath.row == 0) {
+        BusViewController *busVC = [storyboard instantiateViewControllerWithIdentifier:@"bus"];
+        [self presentViewController:busVC animated:true completion:nil];
+        
     }
     
 }

@@ -12,6 +12,8 @@
 {
     NSMutableArray *messagelist;
     DotRequestMessagesAPI *messagesAPI;
+    DotRequestLatestMessageAPI *latestMessageAPI;
+    DotSendMessageAPI *sendMessageAPI;
     Account *account;
     Contact *contact;
 }
@@ -46,23 +48,35 @@
     messagesAPI = [[DotRequestMessagesAPI alloc] init];
     messagesAPI.delegate = self;
     
+    sendMessageAPI = [[DotSendMessageAPI alloc] init];
+    
+    latestMessageAPI = [[DotRequestLatestMessageAPI alloc] init];
+    latestMessageAPI.delegate = self;
+    
+    
     messagelist = [[NSMutableArray alloc] init];
     
     socketio = [[SocketIO alloc] initWithDelegate:self];
-    [socketio connectToHost:@"teambraison-dot.jit.su/socket.io/" onPort:80];
+ //   [socketio connectToHost:@"teambraison-dot.jit.su/socket.io/" onPort:80];
     
     [messagesAPI requestMessagesWith:account.user_id AndContact:contact.userid WithSession:account.session_id];
     
-//    [SIOSocket socketWithHost:@"http://teambraison-dot.jit.su/socket.io/" reconnectAutomatically:true attemptLimit:1 withDelay:5 maximumDelay:30 timeout:30 response:^(SIOSocket *socket){
-//        socketio = socket;
-//    }];
-//    
-//    
-//    [socketio emit:@"join" args:[NSArray arrayWithObject:userData]];
-//    [socketio on:@"new_msg" callback:^(NSArray *args){
-//        NSLog(@"Incoming message %@", args);
-//    }];
-    // Do any additional setup after loading the view.
+    [NSTimer scheduledTimerWithTimeInterval:2.0
+                                     target:self
+                                   selector:@selector(fetchNewMessage)
+                                   userInfo:nil
+                                    repeats:true];
+}
+
+- (void)fetchNewMessage
+{
+    NSLog(@"Fetching new message");
+    [latestMessageAPI requestLatestMessageWith:account.user_id AndContact:contact.userid];
+}
+
+- (void)dotDidReceivedLatestMessage:(NSDictionary *)data
+{
+    NSLog(@"Receiving latest messsage %@", data);
 }
 
 - (void)socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
@@ -114,13 +128,14 @@
     contact = theContact;
 }
 - (IBAction)sendMessageButtonPressed:(id)sender {
-    NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
-    [messageData setObject:account.user_id forKey:@"user_id"];
-    [messageData setObject:@"A simple test data" forKey:@"message"];
-    [socketio sendEvent:@"new_msg" withData:messageData andAcknowledge:^(id argsdata){
-        NSLog(@"Successfully send data");
-    }];
-    [manager writeData:@"Test data"];
+//    NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
+//    [messageData setObject:account.user_id forKey:@"user_id"];
+//    [messageData setObject:@"A simple test data" forKey:@"message"];
+//    [socketio sendEvent:@"new_msg" withData:messageData andAcknowledge:^(id argsdata){
+//        NSLog(@"Successfully send data");
+//    }];
+    [sendMessageAPI sendMessageWithSession:account.session_id AndSenderID:account.user_id AndReceiver:contact.userid AndMessage:@"A test data"];
+    //[manager writeData:@"Test data"];
 }
 
 - (void)didReceiveMemoryWarning {
