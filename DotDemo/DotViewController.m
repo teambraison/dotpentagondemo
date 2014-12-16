@@ -30,8 +30,19 @@
     settingGesture.direction = UISwipeGestureRecognizerDirectionDown;
     settingGesture.numberOfTouchesRequired = 2;
     
+    UISwipeGestureRecognizer *backSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(returnToPreviousScreen)];
+    backSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:backSwipe];
     [self.view addGestureRecognizer:settingGesture];
     // Do any additional setup after loading the view.
+}
+
+- (void)returnToPreviousScreen
+{
+    if(self.presentingViewController != nil) {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }
 }
 
  - (void)bleDidConnectWithDevice

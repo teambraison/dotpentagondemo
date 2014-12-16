@@ -17,7 +17,6 @@
     NSMutableArray *buslist;
     NSArray *waitTime;
     BOOL didVibrate;
-    BLEManager *manager;
 }
 
 @end
@@ -32,15 +31,15 @@
     busTableView.dataSource = self;
     [self.busTableView registerNib:[UINib nibWithNibName:@"BusItemView" bundle:nil] forCellReuseIdentifier:@"busitemcell"];
     [self.busTableView reloadData];
-    
-    didVibrate = false;
-    manager = [BLEManager sharedInstance];
-    manager.delegate = self;
-    [manager startScan];
-    
-//    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(updateAllBus) userInfo:nil repeats:true];
-//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:
+                      @selector(updateAllBus) userInfo:nil repeats:true];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
 }
 
 - (void)updateAllBus
@@ -51,7 +50,7 @@
             if(!didVibrate){
                 AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
                 didVibrate = true;
-                [manager writeData:@"5000"];
+//                [manager writeData:@"5000"];
             }
         } else {
             busitem.time--;
@@ -62,12 +61,6 @@
     }
   //  busitem.waittime.text =
 }
-
-- (void)bleDidConnectWithDevice
-{
-    AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-}
-
 
 
 - (NSString *)convertSecondsToWaitTime:(NSString *)theTime
@@ -129,7 +122,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [manager writeData:@"more testing data"];
+//    [manager writeData:@"more testing data"];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

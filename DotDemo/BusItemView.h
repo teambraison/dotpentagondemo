@@ -11,6 +11,7 @@
 @interface BusItemView : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *busnumber;
 @property (weak, nonatomic) IBOutlet UILabel *waittime;
+@property (weak, nonatomic) IBOutlet UIView *busContainerView;
 
 @property (nonatomic) NSInteger time;
 

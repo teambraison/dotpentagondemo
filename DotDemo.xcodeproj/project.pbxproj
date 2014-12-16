@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5D68BB471A40389000F5FA76 /* DotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB461A40389000F5FA76 /* DotViewController.m */; };
 		5D68BB4B1A403D9500F5FA76 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */; };
+		5D68BB4F1A40429500F5FA76 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB4E1A40429500F5FA76 /* TimeViewController.m */; };
+		5D68BB531A40437200F5FA76 /* AlarmItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB511A40437200F5FA76 /* AlarmItemCell.m */; };
+		5D68BB541A40437200F5FA76 /* AlarmItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D68BB521A40437200F5FA76 /* AlarmItemCell.xib */; };
 		5D998CED1A39C1F100B5FDB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CEC1A39C1F100B5FDB9 /* main.m */; };
 		5D998CF01A39C1F100B5FDB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CEF1A39C1F100B5FDB9 /* AppDelegate.m */; };
 		5D998CF31A39C1F100B5FDB9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CF21A39C1F100B5FDB9 /* ViewController.m */; };
@@ -73,6 +76,11 @@
 		5D68BB461A40389000F5FA76 /* DotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotViewController.m; sourceTree = "<group>"; };
 		5D68BB491A403D9500F5FA76 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		5D68BB4D1A40429500F5FA76 /* TimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeViewController.h; sourceTree = "<group>"; };
+		5D68BB4E1A40429500F5FA76 /* TimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeViewController.m; sourceTree = "<group>"; };
+		5D68BB501A40437200F5FA76 /* AlarmItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmItemCell.h; sourceTree = "<group>"; };
+		5D68BB511A40437200F5FA76 /* AlarmItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmItemCell.m; sourceTree = "<group>"; };
+		5D68BB521A40437200F5FA76 /* AlarmItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmItemCell.xib; sourceTree = "<group>"; };
 		5D998CE71A39C1F100B5FDB9 /* DotDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D998CEB1A39C1F100B5FDB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D998CEC1A39C1F100B5FDB9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -204,6 +212,18 @@
 			name = Setting;
 			sourceTree = "<group>";
 		};
+		5D68BB4C1A40427F00F5FA76 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				5D68BB4D1A40429500F5FA76 /* TimeViewController.h */,
+				5D68BB4E1A40429500F5FA76 /* TimeViewController.m */,
+				5D68BB501A40437200F5FA76 /* AlarmItemCell.h */,
+				5D68BB511A40437200F5FA76 /* AlarmItemCell.m */,
+				5D68BB521A40437200F5FA76 /* AlarmItemCell.xib */,
+			);
+			name = Time;
+			sourceTree = "<group>";
+		};
 		5D998CDE1A39C1F100B5FDB9 = {
 			isa = PBXGroup;
 			children = (
@@ -317,6 +337,7 @@
 		5D998D261A39C29C00B5FDB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D68BB4C1A40427F00F5FA76 /* Time */,
 				5D68BB481A403D7E00F5FA76 /* Setting */,
 				5D68BB441A40386E00F5FA76 /* Dot */,
 				5D998DA11A3ABD4800B5FDB9 /* Bus */,
@@ -586,6 +607,7 @@
 				5D998CFB1A39C1F100B5FDB9 /* LaunchScreen.xib in Resources */,
 				5D998CF81A39C1F100B5FDB9 /* Images.xcassets in Resources */,
 				5D998D371A39DBE800B5FDB9 /* mainmenu.xib in Resources */,
+				5D68BB541A40437200F5FA76 /* AlarmItemCell.xib in Resources */,
 				5D998D471A39DDFF00B5FDB9 /* next_icon.png in Resources */,
 				5D998D451A39DDFF00B5FDB9 /* bus_icon.png in Resources */,
 				5D998D491A39DDFF00B5FDB9 /* time_icon.png in Resources */,
@@ -651,9 +673,11 @@
 				5D998D241A39C29000B5FDB9 /* LGService.m in Sources */,
 				5D998D701A3A104E00B5FDB9 /* MessageItemCell.m in Sources */,
 				5D68BB471A40389000F5FA76 /* DotViewController.m in Sources */,
+				5D68BB4F1A40429500F5FA76 /* TimeViewController.m in Sources */,
 				5DF8F5B31A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m in Sources */,
 				5D998D231A39C29000B5FDB9 /* LGPeripheral.m in Sources */,
 				5D998DAB1A3ABE7000B5FDB9 /* BusItemView.m in Sources */,
+				5D68BB531A40437200F5FA76 /* AlarmItemCell.m in Sources */,
 				5D998D6C1A3A0D0C00B5FDB9 /* MessageViewController.m in Sources */,
 				5D998D341A39DAF000B5FDB9 /* MainMenuViewController.m in Sources */,
 				5D998D751A3A19E500B5FDB9 /* Message.m in Sources */,

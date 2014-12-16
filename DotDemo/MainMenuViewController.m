@@ -67,6 +67,9 @@
         BusViewController *busVC = [storyboard instantiateViewControllerWithIdentifier:@"bus"];
         [self presentViewController:busVC animated:true completion:nil];
         
+    } else if(indexPath.row == 2) {
+        TimeViewController *timeVC = [storyboard instantiateViewControllerWithIdentifier:@"time"];
+        [self presentViewController:timeVC animated:true completion:nil];
     }
     
 }

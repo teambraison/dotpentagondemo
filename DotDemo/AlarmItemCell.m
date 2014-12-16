@@ -1,21 +1,21 @@
 //
-//  BusItemView.m
+//  AlarmItemCell.m
 //  DotDemo
 //
-//  Created by Titus Cheng on 12/12/14.
+//  Created by Titus Cheng on 12/16/14.
 //  Copyright (c) 2014 Braison. All rights reserved.
 //
 
-#import "BusItemView.h"
+#import "AlarmItemCell.h"
 
-@implementation BusItemView
+@implementation AlarmItemCell
 
-@synthesize busnumber, waittime, busContainerView;
+@synthesize alarmTime, alarmSwitch, amPmLabel, daysLabel, alarmItemView;
 
 - (void)awakeFromNib {
     // Initialization code
-    busContainerView.layer.cornerRadius = 8.0f;
-    busContainerView.layer.masksToBounds = true;
+    alarmItemView.layer.cornerRadius = 6.0f;
+    alarmItemView.layer.masksToBounds = true;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -10,7 +10,7 @@
 #import "MainMenuTableViewCell.h"
 #import "ContactViewController.h"
 #import "DotViewController.h"
-
+#import "TimeViewController.h"
 #import "BusViewController.h"
 
 @interface MainMenuViewController : DotViewController <UITableViewDataSource, UITableViewDelegate>

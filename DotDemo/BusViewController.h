@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "BusItemView.h"
-#import "BLEManager.h"
-
+#import "DotViewController.h"
 #import <AudioToolbox/AudioServices.h>
 
-@interface BusViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, BLEManagerUpdateDelegate>
+@interface BusViewController : DotViewController <UITableViewDataSource, UITableViewDelegate, BLEManagerUpdateDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *busTableView;
 
