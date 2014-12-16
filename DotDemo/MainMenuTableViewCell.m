@@ -10,9 +10,12 @@
 
 @implementation MainMenuTableViewCell
 
+@synthesize menuIcon, menuName, menuDescription, mainItemView;
+
 - (void)awakeFromNib {
     // Initialization code
-    
+    mainItemView.layer.cornerRadius = 15.0f;
+    mainItemView.layer.masksToBounds = true;
 }
 
 - (CGFloat)height

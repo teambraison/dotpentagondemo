@@ -16,16 +16,23 @@
     DotSendMessageAPI *sendMessageAPI;
     Account *account;
     Contact *contact;
+    SIOSocket *socketio;
 }
 
 @end
 
 @implementation MessageViewController
 
-@synthesize contactName, messageLabel, conversationView, socketio;
+@synthesize contactName, messageLabel, conversationView, messageBoxView, sendButton;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    messageBoxView.layer.cornerRadius = 6.0f;
+    messageBoxView.layer.masksToBounds = true;
+    
+    sendButton.layer.cornerRadius = 6.0f;
+    sendButton.layer.masksToBounds = true;
     
     manager = [BLEManager sharedInstance];
     [manager startScan];
@@ -56,16 +63,22 @@
     
     messagelist = [[NSMutableArray alloc] init];
     
-    socketio = [[SocketIO alloc] initWithDelegate:self];
- //   [socketio connectToHost:@"teambraison-dot.jit.su/socket.io/" onPort:80];
+    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
+        self->socketio = socket;
+        NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
+        [userData setObject:account.user_name forKey:@"user_name"];
+        [userData setObject:account.user_id forKey:@"user_id"];
+        [socket emit:@"join" args:@[userData]];
+    }];
+    
     
     [messagesAPI requestMessagesWith:account.user_id AndContact:contact.userid WithSession:account.session_id];
     
-    [NSTimer scheduledTimerWithTimeInterval:2.0
-                                     target:self
-                                   selector:@selector(fetchNewMessage)
-                                   userInfo:nil
-                                    repeats:true];
+//    [NSTimer scheduledTimerWithTimeInterval:2.0
+//                                     target:self
+//                                   selector:@selector(fetchNewMessage)
+//                                   userInfo:nil
+//                                    repeats:true];
 }
 
 - (void)fetchNewMessage
@@ -79,48 +92,7 @@
     NSLog(@"Receiving latest messsage %@", data);
 }
 
-- (void)socketIODidDisconnect:(SocketIO *)socket disconnectedWithError:(NSError *)error
-{
-    NSLog(@"Socket IO did disconnect");
-    [socketio connectToHost:@"teambraison-dot.jit.su/socket.io/" onPort:80];
-}
 
-- (void)socketIO:(SocketIO *)socket didSendMessage:(SocketIOPacket *)packet
-{
-    NSLog(@"Socket IO successfully send message");
-}
-
-- (void)socketIO:(SocketIO *)socket onError:(NSError *)error
-{
-    if(error != nil) {
-        NSLog(@"Error in socket: %@ %@", error.debugDescription, error.description);
-    }
-}
-
-- (void)socketIO:(SocketIO *)socket didReceiveJSON:(SocketIOPacket *)packet
-{
-    NSLog(@"Socket IO did receive JSON packet");
-}
-
-- (void)socketIO:(SocketIO *)socket didReceiveEvent:(SocketIOPacket *)packet
-{
-    NSLog(@"Packet data: %@", packet.data);
-    NSLog(@"Packet desc: %@", packet.description);
-    NSLog(@"Packet name: %@", packet.name);
-    
-}
-
-- (void)socketIODidConnect:(SocketIO *)socket
-{
-    NSLog(@"Successfully connected to socket");
-    
-    NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
-    [userData setObject:account.user_name forKey:@"user_name"];
-    [userData setObject:account.user_id forKey:@"user_id"];
-    [socket sendEvent:@"join" withData:userData andAcknowledge:^(id data){
-        NSLog(@"Successfully joined");
-    }];
-}
 
 
 - (void)setContact:(Contact *)theContact
@@ -134,8 +106,21 @@
 //    [socketio sendEvent:@"new_msg" withData:messageData andAcknowledge:^(id argsdata){
 //        NSLog(@"Successfully send data");
 //    }];
-    [sendMessageAPI sendMessageWithSession:account.session_id AndSenderID:account.user_id AndReceiver:contact.userid AndMessage:@"A test data"];
+//    [sendMessageAPI sendMessageWithSession:account.session_id AndSenderID:account.user_id AndReceiver:contact.userid AndMessage:@"A test data"];
     //[manager writeData:@"Test data"];
+    [self sendMessage];
+}
+
+- (void)sendMessage
+{
+    NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
+    [messageData setObject:contact.userid forKey:@"contact_id"];
+    [messageData setObject:account.user_id forKey:@"user_id"];
+    [messageData setObject:account.user_name forKey:@"user_name"];
+    [messageData setObject:contact.username forKey:@"contact_name"];
+    [messageData setObject:@"A simple test data" forKey:@"message"];
+
+    [socketio emit:@"new_msg" args:@[messageData]];
 }
 
 - (void)didReceiveMemoryWarning {

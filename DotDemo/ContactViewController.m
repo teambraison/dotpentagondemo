@@ -90,19 +90,6 @@
     }
     
     NSLog(@"Login Account username: %@", account.user_name);
-    
-//    for(int i = 0; i < incomingData.count; i++) {
-//        NSDictionary *thisContact = [incomingData objectAtIndex:i];
-//        NSString *name = [thisContact objectForKey:@"username"];
-//        NSString *userid = [thisContact objectForKey:@"userid"];
-//        Contact *newContact = [[Contact alloc] init];
-//        newContact.username = name;
-//        newContact.userid = userid;
-//        [contactlist addObject:newContact];
-//        NSLog(@"Contact name: %@ id: %@", name, userid);
-//        
-//    }
-//    [contactsmenu reloadData];
 }
 
 
@@ -133,6 +120,8 @@
 - (ContactItemCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ContactItemCell *cell = [contactsmenu dequeueReusableCellWithIdentifier:@"contactcell"];
+    [[[cell messageCount] layer] setCornerRadius:25.0f];
+    [[[cell messageCount] layer] setMasksToBounds:YES];
     if(cell == nil) {
         cell = [[ContactItemCell alloc] init];
         Contact *myContact = [contactlist objectAtIndex:indexPath.row];

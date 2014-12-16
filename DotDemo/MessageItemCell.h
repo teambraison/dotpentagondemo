@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageItemCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *content;
+
+@property (weak, nonatomic) IBOutlet UITextView *content;
 @property (weak, nonatomic) IBOutlet UILabel *sender;
+@property (weak, nonatomic) IBOutlet UIView *bubbleView;
 
 - (void)setForUser;
 - (void)setForContact;

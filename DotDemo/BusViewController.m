@@ -38,8 +38,8 @@
     manager.delegate = self;
     [manager startScan];
     
-    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(updateAllBus) userInfo:nil repeats:true];
-    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+//    NSTimer *timer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:1 target:self selector:@selector(updateAllBus) userInfo:nil repeats:true];
+//    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
     // Do any additional setup after loading the view.
 }
 

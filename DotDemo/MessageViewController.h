@@ -13,16 +13,17 @@
 #import "Account.h"
 #import "Message.h"
 #import "BLEManager.h"
-#import "SocketIO.h"
-@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, SocketIODelegate, DotRequestLatestMessageDelegate>
+#import <SIOSocket/SIOSocket.h>
+@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, DotRequestLatestMessageDelegate>
 {
     BLEManager *manager;
 }
+@property (weak, nonatomic) IBOutlet UIView *messageBoxView;
 @property (weak, nonatomic) IBOutlet UILabel *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UITableView *conversationView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
-@property (nonatomic, strong) SocketIO *socketio;
 - (void)setContact:(Contact *)theContact;
 
 @end

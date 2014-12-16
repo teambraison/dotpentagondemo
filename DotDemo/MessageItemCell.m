@@ -10,7 +10,7 @@
 
 @implementation MessageItemCell
 
-@synthesize content, sender;
+@synthesize content, sender, bubbleView;
 
 - (void)awakeFromNib {
     // Initialization code
@@ -20,7 +20,8 @@
 {
     content.textAlignment = NSTextAlignmentRight;
     sender.textAlignment = NSTextAlignmentRight;
-    content.layer.cornerRadius = 10;
+    bubbleView.layer.cornerRadius = 6.0f;
+    bubbleView.layer.masksToBounds = true;
     content.backgroundColor = [UIColor whiteColor];
 }
 
@@ -28,7 +29,8 @@
 {
     content.textAlignment = NSTextAlignmentLeft;
     sender.textAlignment = NSTextAlignmentLeft;
-    content.layer.cornerRadius = 10;
+    bubbleView.layer.cornerRadius = 6.0f;
+    bubbleView.layer.masksToBounds = true;
     content.backgroundColor= [UIColor greenColor];
 
 }

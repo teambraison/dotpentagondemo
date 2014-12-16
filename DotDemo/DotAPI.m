@@ -8,7 +8,8 @@
 
 #import "DotAPI.h"
 
-#define URL @"http://teambraison-dot.jit.su"
+//#define URL @"http://teambraison-dot.jit.su"
+#define URL @"http://localhost:3000"
 
 @implementation DotAPI
 
@@ -106,7 +107,7 @@
 
 - (void)requestLoginWith:(NSString *)username AndPassword:(NSString *)password
 {
-    NSLog(@"Requesting login with %@ and %@", username, password);
+//    NSLog(@"Requesting login with %@ and %@", username, password);
     NSString *api = @"/api/login";
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:username forKey:@"user"];
@@ -117,7 +118,22 @@
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [delegate dotDidLogin:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]];
+    if(data != nil) {
+        NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSString *lastChar = [dataString substringFromIndex:[dataString length] - 1];
+        NSDictionary *jsonData;
+        if([lastChar isEqualToString:@"}"]) {
+            jsonData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//            NSLog(@"Login username: %@, session id: %@", [jsonData objectForKey:@"user_id"], [jsonData objectForKey:@"user_sessionid"]);
+        } else {
+            NSString *loginString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] stringByAppendingString:@"}"];
+            jsonData = [NSJSONSerialization JSONObjectWithData:[loginString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
+//            NSLog(@"Login username: %@, session id: %@", [jsonData objectForKey:@"user_id"], [jsonData objectForKey:@"user_sessionid"]);
+
+        }
+        
+        [delegate dotDidLogin:jsonData];
+    }
 }
 
 @end
@@ -139,6 +155,8 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSLog(@"Receiving data from connection");
+    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"Receiving data %@", dataString);
     [delegate dotDidReceiveAllUsers:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]];
 }
 

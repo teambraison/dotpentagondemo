@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     manager = [BLEManager sharedInstance];
     [self.mainMenu registerNib:[UINib nibWithNibName:@"MainMenuTableViewCell" bundle:nil] forCellReuseIdentifier:@"menucell"];
     mainMenu.delegate = self;
@@ -29,6 +30,7 @@
     [mainMenu reloadData];
     
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -49,6 +51,7 @@
         [cell.menuIcon setImage:[UIImage imageNamed:[MENU_ICON objectAtIndex:indexPath.row]]];
         cell.menuDescription.text = [MENU_DESC objectAtIndex:indexPath.row];
     }
+    cell.backgroundColor = mainMenu.backgroundColor;
     return cell;
 }
 

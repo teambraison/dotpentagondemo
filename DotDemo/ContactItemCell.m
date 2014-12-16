@@ -9,6 +9,7 @@
 #import "ContactItemCell.h"
 
 @implementation ContactItemCell
+@synthesize contactImage, contactName, messageCount;
 
 - (void)awakeFromNib {
     // Initialization code

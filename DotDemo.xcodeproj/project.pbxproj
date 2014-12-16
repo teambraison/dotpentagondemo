@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D68BB471A40389000F5FA76 /* DotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB461A40389000F5FA76 /* DotViewController.m */; };
+		5D68BB4B1A403D9500F5FA76 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */; };
 		5D998CED1A39C1F100B5FDB9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CEC1A39C1F100B5FDB9 /* main.m */; };
 		5D998CF01A39C1F100B5FDB9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CEF1A39C1F100B5FDB9 /* AppDelegate.m */; };
 		5D998CF31A39C1F100B5FDB9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998CF21A39C1F100B5FDB9 /* ViewController.m */; };
@@ -43,19 +45,17 @@
 		5D998D701A3A104E00B5FDB9 /* MessageItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D6E1A3A104E00B5FDB9 /* MessageItemCell.m */; };
 		5D998D711A3A104E00B5FDB9 /* MessageItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D998D6F1A3A104E00B5FDB9 /* MessageItemCell.xib */; };
 		5D998D751A3A19E500B5FDB9 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D741A3A19E500B5FDB9 /* Message.m */; };
-		5D998D861A3A2E8C00B5FDB9 /* SocketIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D7C1A3A2E8C00B5FDB9 /* SocketIO.m */; };
-		5D998D871A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D7E1A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.m */; };
-		5D998D881A3A2E8C00B5FDB9 /* SocketIOPacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D801A3A2E8C00B5FDB9 /* SocketIOPacket.m */; };
-		5D998D891A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D831A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m */; };
-		5D998D8A1A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D851A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m */; };
 		5D998D951A3A314300B5FDB9 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D941A3A314300B5FDB9 /* libicucore.dylib */; };
 		5D998D971A3A314A00B5FDB9 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D961A3A314A00B5FDB9 /* CFNetwork.framework */; };
 		5D998D991A3A315500B5FDB9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D981A3A315500B5FDB9 /* Security.framework */; };
 		5D998D9B1A3A315F00B5FDB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D998D9A1A3A315F00B5FDB9 /* Foundation.framework */; };
-		5D998DA01A3A31A200B5FDB9 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998D9F1A3A31A200B5FDB9 /* SRWebSocket.m */; };
 		5D998DA71A3ABDA400B5FDB9 /* BusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998DA61A3ABDA400B5FDB9 /* BusViewController.m */; };
 		5D998DAB1A3ABE7000B5FDB9 /* BusItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D998DA91A3ABE7000B5FDB9 /* BusItemView.m */; };
 		5D998DAC1A3ABE7000B5FDB9 /* BusItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D998DAA1A3ABE7000B5FDB9 /* BusItemView.xib */; };
+		5DF8F5B01A3FEC1E0025EFF6 /* SIOSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8F5A81A3FEC1E0025EFF6 /* SIOSocket.m */; };
+		5DF8F5B11A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5DF8F5AA1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig */; };
+		5DF8F5B21A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5DF8F5AB1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig */; };
+		5DF8F5B31A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF8F5AC1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +69,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D68BB451A40389000F5FA76 /* DotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotViewController.h; sourceTree = "<group>"; };
+		5D68BB461A40389000F5FA76 /* DotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotViewController.m; sourceTree = "<group>"; };
+		5D68BB491A403D9500F5FA76 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		5D998CE71A39C1F100B5FDB9 /* DotDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DotDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D998CEB1A39C1F100B5FDB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D998CEC1A39C1F100B5FDB9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -131,29 +135,25 @@
 		5D998D6F1A3A104E00B5FDB9 /* MessageItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageItemCell.xib; sourceTree = "<group>"; };
 		5D998D731A3A19E500B5FDB9 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		5D998D741A3A19E500B5FDB9 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
-		5D998D7B1A3A2E8C00B5FDB9 /* SocketIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIO.h; sourceTree = "<group>"; };
-		5D998D7C1A3A2E8C00B5FDB9 /* SocketIO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIO.m; sourceTree = "<group>"; };
-		5D998D7D1A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOJSONSerialization.h; sourceTree = "<group>"; };
-		5D998D7E1A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOJSONSerialization.m; sourceTree = "<group>"; };
-		5D998D7F1A3A2E8C00B5FDB9 /* SocketIOPacket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOPacket.h; sourceTree = "<group>"; };
-		5D998D801A3A2E8C00B5FDB9 /* SocketIOPacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOPacket.m; sourceTree = "<group>"; };
-		5D998D811A3A2E8C00B5FDB9 /* SocketIOTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransport.h; sourceTree = "<group>"; };
-		5D998D821A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportWebsocket.h; sourceTree = "<group>"; };
-		5D998D831A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportWebsocket.m; sourceTree = "<group>"; };
-		5D998D841A3A2E8C00B5FDB9 /* SocketIOTransportXHR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketIOTransportXHR.h; sourceTree = "<group>"; };
-		5D998D851A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketIOTransportXHR.m; sourceTree = "<group>"; };
 		5D998D941A3A314300B5FDB9 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		5D998D961A3A314A00B5FDB9 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		5D998D981A3A315500B5FDB9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		5D998D9A1A3A315F00B5FDB9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5D998D9D1A3A31A200B5FDB9 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
-		5D998D9E1A3A31A200B5FDB9 /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
-		5D998D9F1A3A31A200B5FDB9 /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
 		5D998DA51A3ABDA400B5FDB9 /* BusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusViewController.h; sourceTree = "<group>"; };
 		5D998DA61A3ABDA400B5FDB9 /* BusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusViewController.m; sourceTree = "<group>"; };
 		5D998DA81A3ABE7000B5FDB9 /* BusItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusItemView.h; sourceTree = "<group>"; };
 		5D998DA91A3ABE7000B5FDB9 /* BusItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusItemView.m; sourceTree = "<group>"; };
 		5D998DAA1A3ABE7000B5FDB9 /* BusItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusItemView.xib; sourceTree = "<group>"; };
+		5DB6094EEE9CD763B33EFB43 /* Pods-DotDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DotDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-DotDemo/Pods-DotDemo.release.xcconfig"; sourceTree = "<group>"; };
+		5DF8F5A71A3FEC1E0025EFF6 /* SIOSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SIOSocket.h; path = SocketIO/Source/SIOSocket.h; sourceTree = "<group>"; };
+		5DF8F5A81A3FEC1E0025EFF6 /* SIOSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SIOSocket.m; path = SocketIO/Source/SIOSocket.m; sourceTree = "<group>"; };
+		5DF8F5A91A3FEC1E0025EFF6 /* socket.io.js.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = socket.io.js.h; path = SocketIO/Source/socket.io.js.h; sourceTree = "<group>"; };
+		5DF8F5AA1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-DotDemo-SIOSocket.xcconfig"; sourceTree = "<group>"; };
+		5DF8F5AB1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Pods-DotDemo-SIOSocket-Private.xcconfig"; sourceTree = "<group>"; };
+		5DF8F5AC1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Pods-DotDemo-SIOSocket-dummy.m"; sourceTree = "<group>"; };
+		5DF8F5AD1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Pods-DotDemo-SIOSocket-prefix.pch"; sourceTree = "<group>"; };
+		61AB862C49123C7DF8105491 /* Pods-DotDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DotDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DotDemo/Pods-DotDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		B782FB52AD4AED106A2F674B /* libPods-DotDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DotDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +178,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01EFD7E96EE7CBD4E8CFAA20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B782FB52AD4AED106A2F674B /* libPods-DotDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D68BB441A40386E00F5FA76 /* Dot */ = {
+			isa = PBXGroup;
+			children = (
+				5D68BB451A40389000F5FA76 /* DotViewController.h */,
+				5D68BB461A40389000F5FA76 /* DotViewController.m */,
+			);
+			name = Dot;
+			sourceTree = "<group>";
+		};
+		5D68BB481A403D7E00F5FA76 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5D68BB491A403D9500F5FA76 /* SettingViewController.h */,
+				5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
 		5D998CDE1A39C1F100B5FDB9 = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +214,8 @@
 				5D998CE91A39C1F100B5FDB9 /* DotDemo */,
 				5D998D031A39C1F100B5FDB9 /* DotDemoTests */,
 				5D998CE81A39C1F100B5FDB9 /* Products */,
+				D7567A9025D8E6ABCB893E83 /* Pods */,
+				01EFD7E96EE7CBD4E8CFAA20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +317,8 @@
 		5D998D261A39C29C00B5FDB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5D68BB481A403D7E00F5FA76 /* Setting */,
+				5D68BB441A40386E00F5FA76 /* Dot */,
 				5D998DA11A3ABD4800B5FDB9 /* Bus */,
 				5D998D691A3A0CDD00B5FDB9 /* Messaging */,
 				5D998D601A39FA9C00B5FDB9 /* Keyboard */,
@@ -415,30 +445,9 @@
 		5D998D761A3A216600B5FDB9 /* SocketIO */ = {
 			isa = PBXGroup;
 			children = (
-				5D998D9C1A3A31A200B5FDB9 /* SocketRocket */,
-				5D998D7B1A3A2E8C00B5FDB9 /* SocketIO.h */,
-				5D998D7C1A3A2E8C00B5FDB9 /* SocketIO.m */,
-				5D998D7D1A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.h */,
-				5D998D7E1A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.m */,
-				5D998D7F1A3A2E8C00B5FDB9 /* SocketIOPacket.h */,
-				5D998D801A3A2E8C00B5FDB9 /* SocketIOPacket.m */,
-				5D998D811A3A2E8C00B5FDB9 /* SocketIOTransport.h */,
-				5D998D821A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.h */,
-				5D998D831A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m */,
-				5D998D841A3A2E8C00B5FDB9 /* SocketIOTransportXHR.h */,
-				5D998D851A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m */,
+				5DF8F5AF1A3FEC1E0025EFF6 /* SIOSocket */,
 			);
 			name = SocketIO;
-			sourceTree = "<group>";
-		};
-		5D998D9C1A3A31A200B5FDB9 /* SocketRocket */ = {
-			isa = PBXGroup;
-			children = (
-				5D998D9D1A3A31A200B5FDB9 /* SocketRocket-Prefix.pch */,
-				5D998D9E1A3A31A200B5FDB9 /* SRWebSocket.h */,
-				5D998D9F1A3A31A200B5FDB9 /* SRWebSocket.m */,
-			);
-			path = SocketRocket;
 			sourceTree = "<group>";
 		};
 		5D998DA11A3ABD4800B5FDB9 /* Bus */ = {
@@ -453,6 +462,39 @@
 			name = Bus;
 			sourceTree = "<group>";
 		};
+		5DF8F5AE1A3FEC1E0025EFF6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5DF8F5AA1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig */,
+				5DF8F5AB1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig */,
+				5DF8F5AC1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m */,
+				5DF8F5AD1A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-DotDemo-SIOSocket";
+			sourceTree = "<group>";
+		};
+		5DF8F5AF1A3FEC1E0025EFF6 /* SIOSocket */ = {
+			isa = PBXGroup;
+			children = (
+				5DF8F5A71A3FEC1E0025EFF6 /* SIOSocket.h */,
+				5DF8F5A81A3FEC1E0025EFF6 /* SIOSocket.m */,
+				5DF8F5A91A3FEC1E0025EFF6 /* socket.io.js.h */,
+				5DF8F5AE1A3FEC1E0025EFF6 /* Support Files */,
+			);
+			name = SIOSocket;
+			path = ../Pods/SIOSocket;
+			sourceTree = "<group>";
+		};
+		D7567A9025D8E6ABCB893E83 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				61AB862C49123C7DF8105491 /* Pods-DotDemo.debug.xcconfig */,
+				5DB6094EEE9CD763B33EFB43 /* Pods-DotDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -460,9 +502,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D998D0A1A39C1F200B5FDB9 /* Build configuration list for PBXNativeTarget "DotDemo" */;
 			buildPhases = (
+				B613105E07515B7D0EDD601C /* Check Pods Manifest.lock */,
 				5D998CE31A39C1F100B5FDB9 /* Sources */,
 				5D998CE41A39C1F100B5FDB9 /* Frameworks */,
 				5D998CE51A39C1F100B5FDB9 /* Resources */,
+				AAB350301E7CB2962FBD3C19 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -537,6 +581,7 @@
 				5D998D481A39DDFF00B5FDB9 /* settings_icon.png in Resources */,
 				5D998CF61A39C1F100B5FDB9 /* Main.storyboard in Resources */,
 				5D998D4F1A39E95100B5FDB9 /* ContactItemCell.xib in Resources */,
+				5DF8F5B11A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig in Resources */,
 				5D998D711A3A104E00B5FDB9 /* MessageItemCell.xib in Resources */,
 				5D998CFB1A39C1F100B5FDB9 /* LaunchScreen.xib in Resources */,
 				5D998CF81A39C1F100B5FDB9 /* Images.xcassets in Resources */,
@@ -546,6 +591,7 @@
 				5D998D491A39DDFF00B5FDB9 /* time_icon.png in Resources */,
 				5D998D461A39DDFF00B5FDB9 /* msg_icon.png in Resources */,
 				5D998DAC1A3ABE7000B5FDB9 /* BusItemView.xib in Resources */,
+				5DF8F5B21A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig in Resources */,
 				5D998D3C1A39DCAB00B5FDB9 /* MainMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +605,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AAB350301E7CB2962FBD3C19 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DotDemo/Pods-DotDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B613105E07515B7D0EDD601C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5D998CE31A39C1F100B5FDB9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -567,23 +646,21 @@
 				5D998D571A39EDF600B5FDB9 /* DotAPI.m in Sources */,
 				5D998D5B1A39F2F600B5FDB9 /* Account.m in Sources */,
 				5D998CF31A39C1F100B5FDB9 /* ViewController.m in Sources */,
-				5D998D861A3A2E8C00B5FDB9 /* SocketIO.m in Sources */,
-				5D998DA01A3A31A200B5FDB9 /* SRWebSocket.m in Sources */,
+				5D68BB4B1A403D9500F5FA76 /* SettingViewController.m in Sources */,
 				5D998CF01A39C1F100B5FDB9 /* AppDelegate.m in Sources */,
 				5D998D241A39C29000B5FDB9 /* LGService.m in Sources */,
 				5D998D701A3A104E00B5FDB9 /* MessageItemCell.m in Sources */,
-				5D998D881A3A2E8C00B5FDB9 /* SocketIOPacket.m in Sources */,
+				5D68BB471A40389000F5FA76 /* DotViewController.m in Sources */,
+				5DF8F5B31A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-dummy.m in Sources */,
 				5D998D231A39C29000B5FDB9 /* LGPeripheral.m in Sources */,
 				5D998DAB1A3ABE7000B5FDB9 /* BusItemView.m in Sources */,
 				5D998D6C1A3A0D0C00B5FDB9 /* MessageViewController.m in Sources */,
-				5D998D891A3A2E8C00B5FDB9 /* SocketIOTransportWebsocket.m in Sources */,
 				5D998D341A39DAF000B5FDB9 /* MainMenuViewController.m in Sources */,
 				5D998D751A3A19E500B5FDB9 /* Message.m in Sources */,
 				5D998D631A39FAB700B5FDB9 /* KeyboardViewController.m in Sources */,
 				5D998D5F1A39F6D000B5FDB9 /* LoginViewController.m in Sources */,
 				5D998CED1A39C1F100B5FDB9 /* main.m in Sources */,
 				5D998D3B1A39DCAB00B5FDB9 /* MainMenuTableViewCell.m in Sources */,
-				5D998D8A1A3A2E8C00B5FDB9 /* SocketIOTransportXHR.m in Sources */,
 				5D998D211A39C29000B5FDB9 /* LGCentralManager.m in Sources */,
 				5D998DA71A3ABDA400B5FDB9 /* BusViewController.m in Sources */,
 				5D998D301A39C6AC00B5FDB9 /* BLEManager.m in Sources */,
@@ -592,8 +669,8 @@
 				5D998D4E1A39E95100B5FDB9 /* ContactItemCell.m in Sources */,
 				5D998D251A39C29000B5FDB9 /* LGUtils.m in Sources */,
 				5D998D221A39C29000B5FDB9 /* LGCharacteristic.m in Sources */,
+				5DF8F5B01A3FEC1E0025EFF6 /* SIOSocket.m in Sources */,
 				5D998D681A39FE4900B5FDB9 /* Contact.m in Sources */,
-				5D998D871A3A2E8C00B5FDB9 /* SocketIOJSONSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +790,7 @@
 		};
 		5D998D0B1A39C1F200B5FDB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61AB862C49123C7DF8105491 /* Pods-DotDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DotDemo/Info.plist;
@@ -724,6 +802,7 @@
 		};
 		5D998D0C1A39C1F200B5FDB9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DB6094EEE9CD763B33EFB43 /* Pods-DotDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DotDemo/Info.plist;

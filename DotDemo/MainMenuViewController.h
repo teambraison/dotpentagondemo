@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "MainMenuTableViewCell.h"
 #import "ContactViewController.h"
-#import "BLEManager.h"
+#import "DotViewController.h"
 
 #import "BusViewController.h"
 
-@interface MainMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MainMenuViewController : DotViewController <UITableViewDataSource, UITableViewDelegate>
 {
     BLEManager *manager;
 }
