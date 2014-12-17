@@ -11,6 +11,11 @@
 #define AUTO_AUTHENICATION_USERNAME @"eric"
 #define AUTO_AUTHENTICATION_PASSWORD @"6891"
 
+#define ERIC_ICON @"eric_icon.png"
+#define KI_ICON @"ki_icon.png"
+#define MASON_ICON @"mason_icon.png"
+#define JASON_ICON @"jason_icon.png"
+
 @interface ContactViewController ()
 {
     NSMutableArray *contactlist;
@@ -54,11 +59,6 @@
 
 - (void)checkAuthentication
 {
-    if(account == nil) {
-        NSLog(@"account is nil at authentication");
-    } else {
-        NSLog(@"Account is not nil at authentication");
-    }
     if(!account.isAuthenticated) {
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
         [self presentViewController:loginVC animated:true completion:nil];
@@ -109,14 +109,24 @@
     ContactItemCell *cell = [contactsmenu dequeueReusableCellWithIdentifier:@"contactcell"];
     [[[cell messageCount] layer] setCornerRadius:25.0f];
     [[[cell messageCount] layer] setMasksToBounds:YES];
+    Contact *myContact = [contactlist objectAtIndex:indexPath.row];
     if(cell == nil) {
         cell = [[ContactItemCell alloc] init];
-        Contact *myContact = [contactlist objectAtIndex:indexPath.row];
-        cell.contactName.text = myContact.username;
-    } else {
-        Contact *myContact = [contactlist objectAtIndex:indexPath.row];
-        cell.contactName.text = myContact.username;
     }
+    cell.contactName.text = myContact.username;
+    if([myContact.username isEqualToString:@"eric"]) {
+        cell.contactImage.image = [UIImage imageNamed:ERIC_ICON];
+    }
+    if([myContact.username isEqualToString:@"jason"]) {
+        cell.contactImage.image = [UIImage imageNamed:JASON_ICON];
+    }
+    if([myContact.username isEqualToString:@"mason"]) {
+        cell.contactImage.image = [UIImage imageNamed:MASON_ICON];
+    }
+    if([myContact.username isEqualToString:@"ki"]) {
+        cell.contactImage.image = [UIImage imageNamed:KI_ICON];
+    }
+    
     return cell;
 }
 

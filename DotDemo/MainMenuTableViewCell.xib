@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,31 +14,83 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkV-S7-5mx">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pkV-S7-5mx">
                         <rect key="frame" x="8" y="8" width="304" height="94"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="next_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q5D-5D-EjA">
-                                <rect key="frame" x="269" y="30" width="35" height="35"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Q5D-5D-EjA">
+                                <rect key="frame" x="279" y="30" width="25" height="25"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bus_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Rm-S7-cLj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bus_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Rm-S7-cLj">
                                 <rect key="frame" x="18" y="23" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2fS-rx-XB9"/>
+                                    <constraint firstAttribute="width" constant="50" id="FpN-cC-4xP"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSk-Pn-hSA">
-                                <rect key="frame" x="81" y="23" width="197" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSk-Pn-hSA">
+                                <rect key="frame" x="81" y="23" width="52" height="33"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="버스를 찾아보세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZK-Cb-rit">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="버스를 찾아보세요" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZK-Cb-rit">
                                 <rect key="frame" x="83" y="49" width="195" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="195" id="VE9-ah-Wqr"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.7686274509803922" green="0.7686274509803922" blue="0.7686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="leading" secondItem="0Rm-S7-cLj" secondAttribute="trailing" constant="15" id="2OG-PF-dNS"/>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="top" secondItem="pkV-S7-5mx" secondAttribute="top" constant="49" id="4ya-K5-grZ"/>
+                            <constraint firstAttribute="bottom" secondItem="iSk-Pn-hSA" secondAttribute="bottom" constant="38" id="5K3-CB-hb0"/>
+                            <constraint firstItem="iSk-Pn-hSA" firstAttribute="leading" secondItem="0Rm-S7-cLj" secondAttribute="trailing" constant="13" id="BNw-Rt-KV7"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="top" secondItem="pkV-S7-5mx" secondAttribute="top" constant="23" id="BdT-hk-ibZ"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="leading" secondItem="pkV-S7-5mx" secondAttribute="leading" constant="18" id="GGh-MH-LfG"/>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="bottom" secondItem="0Rm-S7-cLj" secondAttribute="bottom" id="LbU-0Y-G14"/>
+                            <constraint firstItem="iSk-Pn-hSA" firstAttribute="top" secondItem="pkV-S7-5mx" secondAttribute="top" constant="23" id="NEK-WM-slo"/>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="top" secondItem="iSk-Pn-hSA" secondAttribute="bottom" constant="-7" id="a7O-rO-ROB"/>
+                            <constraint firstItem="iSk-Pn-hSA" firstAttribute="top" secondItem="0Rm-S7-cLj" secondAttribute="top" id="bkB-tl-tRV"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="leading" secondItem="pkV-S7-5mx" secondAttribute="leading" constant="18" id="cKP-Eg-2ic"/>
+                            <constraint firstItem="Q5D-5D-EjA" firstAttribute="top" secondItem="pkV-S7-5mx" secondAttribute="top" constant="30" id="dEG-M5-eaU"/>
+                            <constraint firstAttribute="bottom" secondItem="0Rm-S7-cLj" secondAttribute="bottom" constant="21" id="elq-bG-vau"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="bottom" secondItem="IZK-Cb-rit" secondAttribute="bottom" id="f4T-ID-W4v"/>
+                            <constraint firstItem="iSk-Pn-hSA" firstAttribute="leading" secondItem="0Rm-S7-cLj" secondAttribute="trailing" constant="13" id="fc2-v8-gwf"/>
+                            <constraint firstAttribute="trailing" secondItem="IZK-Cb-rit" secondAttribute="trailing" constant="26" id="irp-Kd-Hwu"/>
+                            <constraint firstAttribute="trailing" secondItem="Q5D-5D-EjA" secondAttribute="trailing" id="nL6-Fi-duD"/>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="leading" secondItem="0Rm-S7-cLj" secondAttribute="trailing" constant="15" id="oFZ-7N-81F"/>
+                            <constraint firstItem="IZK-Cb-rit" firstAttribute="trailing" secondItem="iSk-Pn-hSA" secondAttribute="trailing" id="qme-i8-HJn"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="top" secondItem="iSk-Pn-hSA" secondAttribute="top" id="ukx-dD-zbR"/>
+                            <constraint firstItem="0Rm-S7-cLj" firstAttribute="top" secondItem="pkV-S7-5mx" secondAttribute="top" constant="23" id="xlq-hA-QoO"/>
+                            <constraint firstItem="iSk-Pn-hSA" firstAttribute="leading" secondItem="0Rm-S7-cLj" secondAttribute="trailing" constant="13" id="yle-br-gbu"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GGh-MH-LfG"/>
+                                <exclude reference="elq-bG-vau"/>
+                                <exclude reference="ukx-dD-zbR"/>
+                                <exclude reference="xlq-hA-QoO"/>
+                                <exclude reference="5K3-CB-hb0"/>
+                                <exclude reference="BNw-Rt-KV7"/>
+                                <exclude reference="bkB-tl-tRV"/>
+                                <exclude reference="fc2-v8-gwf"/>
+                                <exclude reference="2OG-PF-dNS"/>
+                                <exclude reference="LbU-0Y-G14"/>
+                                <exclude reference="qme-i8-HJn"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="pkV-S7-5mx" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="VBZ-3U-QYf"/>
+                    <constraint firstItem="pkV-S7-5mx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="cZd-qx-Yzb"/>
+                    <constraint firstItem="pkV-S7-5mx" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="jDF-jM-p6Y"/>
+                    <constraint firstItem="pkV-S7-5mx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="mfS-Ql-uva"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="mainItemView" destination="pkV-S7-5mx" id="GOF-JX-Xyu"/>

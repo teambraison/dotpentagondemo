@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,20 +14,28 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rGz-c6-gmr">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rGz-c6-gmr">
                         <rect key="frame" x="8" y="8" width="304" height="75"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K7-6h-1dd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K7-6h-1dd">
                                 <rect key="frame" x="246" y="13" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.40392156862745099" green="0.96470588235294119" blue="0.67843137254901964" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="DZt-Yo-Qm8"/>
+                                    <constraint firstAttribute="width" constant="50" id="dd5-hN-lgI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mason_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="sFA-W2-xoZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mason_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="sFA-W2-xoZ">
                                 <rect key="frame" x="8" y="13" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="cVf-cN-Sot"/>
+                                    <constraint firstAttribute="height" constant="50" id="gxB-8S-kjh"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="성기광" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rd-3A-Zdx">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성기광" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rd-3A-Zdx">
                                 <rect key="frame" x="66" y="13" width="177" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
                                 <color key="textColor" red="0.0039215686274509803" green="0.0039215686274509803" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
@@ -34,9 +43,36 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="0Rd-3A-Zdx" secondAttribute="centerX" constant="-2.5" id="Ha3-hA-EWL"/>
+                            <constraint firstItem="sFA-W2-xoZ" firstAttribute="top" secondItem="9K7-6h-1dd" secondAttribute="top" id="LK2-w7-FcH"/>
+                            <constraint firstItem="sFA-W2-xoZ" firstAttribute="leading" secondItem="rGz-c6-gmr" secondAttribute="leading" constant="8" id="NTE-91-jZz"/>
+                            <constraint firstAttribute="trailing" secondItem="9K7-6h-1dd" secondAttribute="trailing" constant="8" id="Pcw-VM-eZK"/>
+                            <constraint firstItem="0Rd-3A-Zdx" firstAttribute="leading" secondItem="sFA-W2-xoZ" secondAttribute="trailing" constant="8" id="Qer-LP-Kh5"/>
+                            <constraint firstAttribute="centerY" secondItem="9K7-6h-1dd" secondAttribute="centerY" constant="-0.5" id="QfM-50-yUV"/>
+                            <constraint firstItem="sFA-W2-xoZ" firstAttribute="top" secondItem="0Rd-3A-Zdx" secondAttribute="top" id="R2T-hs-5Wn"/>
+                            <constraint firstAttribute="centerX" secondItem="9K7-6h-1dd" secondAttribute="centerX" constant="-119" id="aWz-j6-aCK"/>
+                            <constraint firstAttribute="centerY" secondItem="0Rd-3A-Zdx" secondAttribute="centerY" constant="-0.5" id="cB9-Oo-kfj"/>
+                            <constraint firstItem="9K7-6h-1dd" firstAttribute="top" secondItem="rGz-c6-gmr" secondAttribute="top" constant="13" id="eaD-v4-bJH"/>
+                            <constraint firstAttribute="bottom" secondItem="9K7-6h-1dd" secondAttribute="bottom" constant="12" id="ezV-Np-43u"/>
+                            <constraint firstItem="9K7-6h-1dd" firstAttribute="leading" secondItem="0Rd-3A-Zdx" secondAttribute="trailing" constant="3" id="nLr-NE-az3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Pcw-VM-eZK"/>
+                                <exclude reference="eaD-v4-bJH"/>
+                                <exclude reference="ezV-Np-43u"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="rGz-c6-gmr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="DEo-Ml-DQT"/>
+                    <constraint firstItem="rGz-c6-gmr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="H2K-4e-qia"/>
+                    <constraint firstItem="rGz-c6-gmr" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="ZbW-3P-YMX"/>
+                    <constraint firstItem="rGz-c6-gmr" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="l20-xo-RZe"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="contactContainerView" destination="rGz-c6-gmr" id="XN0-ag-Nw7"/>

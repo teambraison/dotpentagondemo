@@ -40,9 +40,7 @@
 
 - (void)returnToPreviousScreen
 {
-    if(self.presentingViewController != nil) {
-        [self dismissViewControllerAnimated:true completion:nil];
-    }
+    [self.navigationController popViewControllerAnimated:true];
 }
 
  - (void)bleDidConnectWithDevice

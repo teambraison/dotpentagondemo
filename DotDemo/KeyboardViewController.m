@@ -99,7 +99,9 @@
 
 - (void)deleteOneCharacter
 {
-    outputText.text = [outputText.text substringToIndex:outputText.text.length - 1];
+    if(outputText.text.length > 0){
+     outputText.text = [outputText.text substringToIndex:outputText.text.length - 1];   
+    }
 }
 
 - (void)returnToPreviousScreen
