@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define URL @"http://teambraison-dot.jit.su"
+#define SOCKET_URL @"http://teambraison-dot.jit.su/socket.io/"
+//#define URL @"http://localhost:3000"
+
 //@protocol DotAPIDelegate
 //
 //- (void)dotDidReceivedData:(NSDictionary *)data;

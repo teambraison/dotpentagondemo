@@ -12,8 +12,9 @@
 #import "DotAPI.h"
 #import "Contact.h"
 #import "MessageViewController.h"
+#import "LoginViewController.h"
 
-@interface ContactViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate, DotLoginDelegate, DotRequestAllUsersDelegate>
+@interface ContactViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate, DotRequestAllUsersDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *contactsmenu;
 
 @end

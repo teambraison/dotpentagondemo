@@ -23,6 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:true];
     manager = [BLEManager sharedInstance];
     [self.mainMenu registerNib:[UINib nibWithNibName:@"MainMenuTableViewCell" bundle:nil] forCellReuseIdentifier:@"menucell"];
     mainMenu.delegate = self;
@@ -60,16 +61,19 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     if(indexPath.row == 1) {
         ContactViewController *contactVC = [storyboard instantiateViewControllerWithIdentifier:@"contacts"];
-        [self presentViewController:contactVC animated:true completion:nil];
+        [self.navigationController pushViewController:contactVC animated:true];
+  //      [self presentViewController:contactVC animated:true completion:nil];
     } else if(indexPath.row == 3) {
         [manager startScan];
     } else if(indexPath.row == 0) {
         BusViewController *busVC = [storyboard instantiateViewControllerWithIdentifier:@"bus"];
-        [self presentViewController:busVC animated:true completion:nil];
+        [self.navigationController pushViewController:busVC animated:true];
+ //       [self presentViewController:busVC animated:true completion:nil];
         
     } else if(indexPath.row == 2) {
         TimeViewController *timeVC = [storyboard instantiateViewControllerWithIdentifier:@"time"];
-        [self presentViewController:timeVC animated:true completion:nil];
+        [self.navigationController pushViewController:timeVC animated:true];
+        //     [self presentViewController:timeVC animated:true completion:nil];
     }
     
 }

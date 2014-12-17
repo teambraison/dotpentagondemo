@@ -15,7 +15,6 @@
 {
     NSMutableArray *contactlist;
     Account *account;
-    DotLoginAPI *loginAPI;
     DotRequestAllUsersAPI *userRequestAPI;
 }
 
@@ -27,8 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    loginAPI = [[DotLoginAPI alloc] init];
-    loginAPI.delegate = self;
+    
+    account = [Account sharedInstance];
     
     [self.contactsmenu registerNib:[UINib nibWithNibName:@"ContactItemCell" bundle:nil] forCellReuseIdentifier:@"contactcell"];
     
@@ -48,18 +47,23 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self checkAuthentication];
+}
+
 - (void)checkAuthentication
 {
-    account = [Account sharedInstance];
     if(account == nil) {
         NSLog(@"account is nil at authentication");
     } else {
         NSLog(@"Account is not nil at authentication");
     }
     if(!account.isAuthenticated) {
-        [loginAPI requestLoginWith:AUTO_AUTHENICATION_USERNAME AndPassword:AUTO_AUTHENTICATION_PASSWORD];
+        LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
+        [self presentViewController:loginVC animated:true completion:nil];
     } else {
-        
+        [userRequestAPI requestAllUsers:account.session_id];
     }
 }
 
@@ -68,48 +72,31 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MessageViewController *messageVC = [storyboard instantiateViewControllerWithIdentifier:@"messages"];
     [messageVC setContact:[contactlist objectAtIndex:indexPath.row]];
-    [self presentViewController:messageVC animated:true completion:nil];
+    [self.navigationController pushViewController:messageVC animated:true];
+ //   [self presentViewController:messageVC animated:true completion:nil];
 }
-
-- (void)dotDidLogin:(NSDictionary *)data
-{
-    NSLog(@"Reciving data from login api at ContactViewController");
-    NSLog(@"Verifying data: %@", data);
-    if(data != nil) {
-        NSString *userid = [data objectForKey:@"user_id"];
-        NSString *sessionid = [data objectForKey:@"user_sessionid"];
-        account.user_id = [NSString stringWithString:userid];
-        account.session_id = [NSString stringWithString:sessionid];
-        account.isAuthenticated = true;
-        account.user_name = AUTO_AUTHENICATION_USERNAME;
-        [userRequestAPI requestAllUsers:sessionid];
-
-        NSLog(@"Login data is intact");
-    } else {
-        NSLog(@"Login data is null");
-    }
-    
-    NSLog(@"Login Account username: %@", account.user_name);
-}
-
 
 - (void)dotDidReceiveAllUsers:(NSDictionary *)data
 {
-    NSLog(@"Reciving data from delegate at ContactViewController");
-    NSLog(@"Verifying data: %@", data);
-    NSArray *incomingData = [data objectForKey:@"contacts"];
-    for(int i = 0; i < incomingData.count; i++) {
-        NSDictionary *thisContact = [incomingData objectAtIndex:i];
-        NSString *name = [thisContact objectForKey:@"username"];
-        NSString *userid = [thisContact objectForKey:@"userid"];
-        Contact *newContact = [[Contact alloc] init];
-        newContact.username = name;
-        newContact.userid = userid;
-        [contactlist addObject:newContact];
-        NSLog(@"Contact name: %@ id: %@", name, userid);
-        
+    if(data != nil) {
+        NSLog(@"Reciving data from delegate at ContactViewController");
+        NSLog(@"Verifying data: %@", data);
+        NSArray *incomingData = [data objectForKey:@"contacts"];
+        for(int i = 0; i < incomingData.count; i++) {
+            NSDictionary *thisContact = [incomingData objectAtIndex:i];
+            NSString *name = [thisContact objectForKey:@"username"];
+            NSString *userid = [thisContact objectForKey:@"userid"];
+            Contact *newContact = [[Contact alloc] init];
+            newContact.username = name;
+            newContact.userid = userid;
+            [contactlist addObject:newContact];
+            NSLog(@"Contact name: %@ id: %@", name, userid);
+            
+        }
+        [self.contactsmenu reloadData];
+    } else {
+        [userRequestAPI requestAllUsers:account.session_id];
     }
-    [self.contactsmenu reloadData];
 }
 
 - (void)didReceiveMemoryWarning {

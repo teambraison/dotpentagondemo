@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D2E99371A414B01004C710E /* KeyItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2E99361A414B01004C710E /* KeyItemView.m */; };
+		5D2E99391A414B23004C710E /* KeyItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E99381A414B23004C710E /* KeyItemView.xib */; };
+		5D2E993B1A41B4DF004C710E /* eric_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E993A1A41B4DF004C710E /* eric_icon.png */; };
+		5D2E993D1A41B507004C710E /* ki_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E993C1A41B507004C710E /* ki_icon.png */; };
+		5D2E993F1A41B52A004C710E /* jason_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E993E1A41B52A004C710E /* jason_icon.png */; };
+		5D2E99411A41B53F004C710E /* mason_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D2E99401A41B53F004C710E /* mason_icon.png */; };
 		5D68BB471A40389000F5FA76 /* DotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB461A40389000F5FA76 /* DotViewController.m */; };
 		5D68BB4B1A403D9500F5FA76 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB4A1A403D9500F5FA76 /* SettingViewController.m */; };
 		5D68BB4F1A40429500F5FA76 /* TimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D68BB4E1A40429500F5FA76 /* TimeViewController.m */; };
@@ -72,6 +78,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D2E99351A414B01004C710E /* KeyItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyItemView.h; sourceTree = "<group>"; };
+		5D2E99361A414B01004C710E /* KeyItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyItemView.m; sourceTree = "<group>"; };
+		5D2E99381A414B23004C710E /* KeyItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeyItemView.xib; sourceTree = "<group>"; };
+		5D2E993A1A41B4DF004C710E /* eric_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eric_icon.png; sourceTree = "<group>"; };
+		5D2E993C1A41B507004C710E /* ki_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ki_icon.png; sourceTree = "<group>"; };
+		5D2E993E1A41B52A004C710E /* jason_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jason_icon.png; sourceTree = "<group>"; };
+		5D2E99401A41B53F004C710E /* mason_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mason_icon.png; sourceTree = "<group>"; };
 		5D68BB451A40389000F5FA76 /* DotViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DotViewController.h; sourceTree = "<group>"; };
 		5D68BB461A40389000F5FA76 /* DotViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DotViewController.m; sourceTree = "<group>"; };
 		5D68BB491A403D9500F5FA76 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
@@ -375,6 +388,10 @@
 		5D998D3D1A39DDEB00B5FDB9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5D2E99401A41B53F004C710E /* mason_icon.png */,
+				5D2E993E1A41B52A004C710E /* jason_icon.png */,
+				5D2E993C1A41B507004C710E /* ki_icon.png */,
+				5D2E993A1A41B4DF004C710E /* eric_icon.png */,
 				5D998D3E1A39DDFF00B5FDB9 /* alarm_icon.png */,
 				5D998D3F1A39DDFF00B5FDB9 /* bus_icon.png */,
 				5D998D401A39DDFF00B5FDB9 /* msg_icon.png */,
@@ -429,6 +446,9 @@
 			children = (
 				5D998D611A39FAB700B5FDB9 /* KeyboardViewController.h */,
 				5D998D621A39FAB700B5FDB9 /* KeyboardViewController.m */,
+				5D2E99351A414B01004C710E /* KeyItemView.h */,
+				5D2E99361A414B01004C710E /* KeyItemView.m */,
+				5D2E99381A414B23004C710E /* KeyItemView.xib */,
 			);
 			name = Keyboard;
 			sourceTree = "<group>";
@@ -567,6 +587,7 @@
 				TargetAttributes = {
 					5D998CE61A39C1F100B5FDB9 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = DLS9TB22WX;
 					};
 					5D998CFF1A39C1F100B5FDB9 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -601,18 +622,23 @@
 				5D998D441A39DDFF00B5FDB9 /* alarm_icon.png in Resources */,
 				5D998D481A39DDFF00B5FDB9 /* settings_icon.png in Resources */,
 				5D998CF61A39C1F100B5FDB9 /* Main.storyboard in Resources */,
+				5D2E99411A41B53F004C710E /* mason_icon.png in Resources */,
 				5D998D4F1A39E95100B5FDB9 /* ContactItemCell.xib in Resources */,
 				5DF8F5B11A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket.xcconfig in Resources */,
 				5D998D711A3A104E00B5FDB9 /* MessageItemCell.xib in Resources */,
+				5D2E993D1A41B507004C710E /* ki_icon.png in Resources */,
 				5D998CFB1A39C1F100B5FDB9 /* LaunchScreen.xib in Resources */,
+				5D2E993B1A41B4DF004C710E /* eric_icon.png in Resources */,
 				5D998CF81A39C1F100B5FDB9 /* Images.xcassets in Resources */,
 				5D998D371A39DBE800B5FDB9 /* mainmenu.xib in Resources */,
+				5D2E99391A414B23004C710E /* KeyItemView.xib in Resources */,
 				5D68BB541A40437200F5FA76 /* AlarmItemCell.xib in Resources */,
 				5D998D471A39DDFF00B5FDB9 /* next_icon.png in Resources */,
 				5D998D451A39DDFF00B5FDB9 /* bus_icon.png in Resources */,
 				5D998D491A39DDFF00B5FDB9 /* time_icon.png in Resources */,
 				5D998D461A39DDFF00B5FDB9 /* msg_icon.png in Resources */,
 				5D998DAC1A3ABE7000B5FDB9 /* BusItemView.xib in Resources */,
+				5D2E993F1A41B52A004C710E /* jason_icon.png in Resources */,
 				5DF8F5B21A3FEC1E0025EFF6 /* Pods-DotDemo-SIOSocket-Private.xcconfig in Resources */,
 				5D998D3C1A39DCAB00B5FDB9 /* MainMenuTableViewCell.xib in Resources */,
 			);
@@ -690,6 +716,7 @@
 				5D998D301A39C6AC00B5FDB9 /* BLEManager.m in Sources */,
 				5D998D201A39C29000B5FDB9 /* CBUUID+StringExtraction.m in Sources */,
 				5D998D521A39E97100B5FDB9 /* ContactViewController.m in Sources */,
+				5D2E99371A414B01004C710E /* KeyItemView.m in Sources */,
 				5D998D4E1A39E95100B5FDB9 /* ContactItemCell.m in Sources */,
 				5D998D251A39C29000B5FDB9 /* LGUtils.m in Sources */,
 				5D998D221A39C29000B5FDB9 /* LGCharacteristic.m in Sources */,
@@ -817,10 +844,13 @@
 			baseConfigurationReference = 61AB862C49123C7DF8105491 /* Pods-DotDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DotDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -829,10 +859,13 @@
 			baseConfigurationReference = 5DB6094EEE9CD763B33EFB43 /* Pods-DotDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DotDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

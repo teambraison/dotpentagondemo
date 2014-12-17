@@ -8,8 +8,6 @@
 
 #import "DotAPI.h"
 
-//#define URL @"http://teambraison-dot.jit.su"
-#define URL @"http://localhost:3000"
 
 @implementation DotAPI
 
@@ -112,7 +110,7 @@
     NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
     [parameters setObject:username forKey:@"user"];
     [parameters setObject:password forKey:@"pass"];
-    
+    NSLog(@"Starting login request");
     [self startRequest:api WithData:parameters];
 }
 

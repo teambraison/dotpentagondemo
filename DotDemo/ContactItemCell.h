@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *contactImage;
 @property (weak, nonatomic) IBOutlet UILabel *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *messageCount;
+@property (weak, nonatomic) IBOutlet UIView *contactContainerView;
 
 @end

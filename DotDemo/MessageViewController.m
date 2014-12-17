@@ -8,6 +8,8 @@
 
 #import "MessageViewController.h"
 
+#define MESSAGE_KEY @"message"
+
 @interface MessageViewController ()
 {
     NSMutableArray *messagelist;
@@ -17,6 +19,7 @@
     Account *account;
     Contact *contact;
     SIOSocket *socketio;
+    KeyboardViewController *keyboardVC;
 }
 
 @end
@@ -38,6 +41,11 @@
     [manager startScan];
     conversationView.delegate = self;
     conversationView.dataSource = self;
+    
+    UITapGestureRecognizer *keyboardTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openKeyboard)];
+    keyboardTap.numberOfTouchesRequired = 1;
+    keyboardTap.numberOfTapsRequired = 1;
+    [messageBoxView addGestureRecognizer:keyboardTap];
     
     [self.conversationView registerNib:[UINib nibWithNibName:@"MessageItemCell" bundle:nil] forCellReuseIdentifier:@"messagecell"];
     
@@ -63,22 +71,65 @@
     
     messagelist = [[NSMutableArray alloc] init];
     
-    [SIOSocket socketWithHost: @"http://localhost:3000" response: ^(SIOSocket *socket) {
+    [SIOSocket socketWithHost:URL  response: ^(SIOSocket *socket) {
         self->socketio = socket;
-        NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
-        [userData setObject:account.user_name forKey:@"user_name"];
-        [userData setObject:account.user_id forKey:@"user_id"];
-        [socket emit:@"join" args:@[userData]];
+//        NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
+//        [userData setObject:account.user_name forKey:@"user_name"];
+//        [userData setObject:account.user_id forKey:@"user_id"];
+//        [socket emit:@"join" args:@[userData]];
     }];
+    
+    socketio.onConnect = ^(){
+        
+    };
     
     
     [messagesAPI requestMessagesWith:account.user_id AndContact:contact.userid WithSession:account.session_id];
+    
+    keyboardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"keyboard"];
+    keyboardVC.delegate = self;
     
 //    [NSTimer scheduledTimerWithTimeInterval:2.0
 //                                     target:self
 //                                   selector:@selector(fetchNewMessage)
 //                                   userInfo:nil
 //                                    repeats:true];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
+    [userData setObject:account.user_name forKey:@"user_name"];
+    [userData setObject:account.user_id forKey:@"user_id"];
+    [socketio emit:@"join" args:@[userData]];
+    
+    [socketio on:@"new_msg" callback:^(NSArray *args) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSDictionary *receivedMessage = [args objectAtIndex:0];
+            Message *newMessage = [[Message alloc] init];
+            newMessage.senderName = [receivedMessage objectForKey:@"sender_id"];
+            newMessage.messageContent = [receivedMessage objectForKey:@"message"];
+            [messagelist addObject:newMessage];
+            [conversationView reloadData];
+            [conversationView layoutIfNeeded];
+            NSLog(@"%@", args);
+  //          [self scrollToBottom];
+        });
+    }];
+
+}
+
+- (void)scrollToBottom
+{
+//    NSInteger rowNumbers = [conversationView numberOfRowsInSection:0];
+//    [conversationView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:rowNumbers inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+
+- (void)keyboardViewDidFinishInput:(NSString *)value WithKey:(NSString *)key
+{
+    if([key isEqualToString:MESSAGE_KEY]) {
+        messageLabel.text = value;
+    }
 }
 
 - (void)fetchNewMessage
@@ -92,7 +143,11 @@
     NSLog(@"Receiving latest messsage %@", data);
 }
 
-
+- (void)openKeyboard
+{
+    keyboardVC.key = MESSAGE_KEY;
+    [self presentViewController:keyboardVC animated:true completion:nil];
+}
 
 
 - (void)setContact:(Contact *)theContact
@@ -100,27 +155,31 @@
     contact = theContact;
 }
 - (IBAction)sendMessageButtonPressed:(id)sender {
-//    NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
-//    [messageData setObject:account.user_id forKey:@"user_id"];
-//    [messageData setObject:@"A simple test data" forKey:@"message"];
-//    [socketio sendEvent:@"new_msg" withData:messageData andAcknowledge:^(id argsdata){
-//        NSLog(@"Successfully send data");
-//    }];
-//    [sendMessageAPI sendMessageWithSession:account.session_id AndSenderID:account.user_id AndReceiver:contact.userid AndMessage:@"A test data"];
-    //[manager writeData:@"Test data"];
     [self sendMessage];
 }
 
 - (void)sendMessage
 {
-    NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
-    [messageData setObject:contact.userid forKey:@"contact_id"];
-    [messageData setObject:account.user_id forKey:@"user_id"];
-    [messageData setObject:account.user_name forKey:@"user_name"];
-    [messageData setObject:contact.username forKey:@"contact_name"];
-    [messageData setObject:@"A simple test data" forKey:@"message"];
+    NSLog(@"sending message");
+    //First join
+    
+    //Then send message
+    if(messageLabel.text != nil) {
+        NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
+        [messageData setObject:contact.userid forKey:@"contact_id"];
+        [messageData setObject:account.user_id forKey:@"user_id"];
+        [messageData setObject:account.user_name forKey:@"user_name"];
+        [messageData setObject:contact.username forKey:@"contact_name"];
+        [messageData setObject:messageLabel.text forKey:@"message"];
+        
+        Message *mySendMessage = [[Message alloc] init];
+        mySendMessage.senderName = account.user_name;
+        mySendMessage.messageContent = messageLabel.text;
+        [messagelist addObject:mySendMessage];
+        [conversationView reloadData];
 
-    [socketio emit:@"new_msg" args:@[messageData]];
+        [socketio emit:@"new_msg" args:@[messageData]];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -172,6 +231,7 @@
         [messagelist addObject:privateMessage];
     }
     [conversationView reloadData];
+    [self scrollToBottom];
 
 }
 
