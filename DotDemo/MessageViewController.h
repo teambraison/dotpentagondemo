@@ -16,15 +16,14 @@
 #import <SIOSocket/SIOSocket.h>
 #import "KeyboardViewController.h"
 
-@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, DotRequestLatestMessageDelegate, KeyboardViewDelegate>
+
+@interface MessageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, DotDidReceivedChatMessages, DotRequestLatestMessageDelegate, KeyboardViewDelegate, BLEManagerUpdateDelegate>
 {
     BLEManager *manager;
 }
-@property (weak, nonatomic) IBOutlet UIView *messageBoxView;
-@property (weak, nonatomic) IBOutlet UILabel *contactName;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UITableView *conversationView;
-@property (weak, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITextField *messageTextView;
+
 
 - (void)setContact:(Contact *)theContact;
 

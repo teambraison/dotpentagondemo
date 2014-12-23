@@ -113,9 +113,10 @@
     if (aCallback) {
         [self push:aCallback toArray:self.writeOperationStack];
     }
-    [self.cbCharacteristic.service.peripheral writeValue:data
-                                       forCharacteristic:self.cbCharacteristic
-                                                    type:type];
+//    [self.cbCharacteristic.service.peripheral writeValue:data
+//                                       forCharacteristic:self.cbCharacteristic
+//                                                    type:type];
+    [self.cbCharacteristic.service.peripheral writeValue:data forCharacteristic:self.cbCharacteristic type:CBCharacteristicWriteWithoutResponse];
 }
 
 - (void)writeByte:(int8_t)aByte

@@ -10,6 +10,6 @@
 
 @implementation Contact
 
-@synthesize userid, username;
+@synthesize userid, username, name;
 
 @end

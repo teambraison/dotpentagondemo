@@ -31,8 +31,18 @@
     busTableView.dataSource = self;
     [self.busTableView registerNib:[UINib nibWithNibName:@"BusItemView" bundle:nil] forCellReuseIdentifier:@"busitemcell"];
     [self.busTableView reloadData];
+    
+    UISwipeGestureRecognizer *returnSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(returnToPreviousScreen)];
+    returnSwipe.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:returnSwipe];
 
     // Do any additional setup after loading the view.
+}
+
+- (void)returnToPreviousScreen
+{
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)viewDidAppear:(BOOL)animated

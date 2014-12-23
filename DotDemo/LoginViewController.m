@@ -53,9 +53,17 @@
     keyboardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"keyboard"];
     keyboardVC.delegate = self;
     
+    UISwipeGestureRecognizer *returnSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(returnToPreviousScreen)];
+    
     [usernameSelection addGestureRecognizer:usernameTap];
     [passwordSelection addGestureRecognizer:passwordTap];
+    [self.view addGestureRecognizer:returnSwipe];
     // Do any additional setup after loading the view.
+}
+
+- (void)returnToPreviousScreen
+{
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)dotDidLogin:(NSDictionary *)data

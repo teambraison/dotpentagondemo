@@ -154,8 +154,16 @@
 {
     NSLog(@"Receiving data from connection");
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    //Fixing a weird bug where data string is missing a closing bracket
+    if([dataString hasSuffix:@"}"]) {
+        [delegate dotDidReceiveAllUsers:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]];
+
+    } else {
+        dataString = [dataString stringByAppendingString:@"}"];
+        [delegate dotDidReceiveAllUsers:[NSJSONSerialization JSONObjectWithData:[dataString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil]];
+    }
     NSLog(@"Receiving data %@", dataString);
-    [delegate dotDidReceiveAllUsers:[NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil]];
 }
 
 @end

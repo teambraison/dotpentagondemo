@@ -17,29 +17,56 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhZ-Jh-Xyw">
                         <rect key="frame" x="8" y="10" width="304" height="66"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bus_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="DhC-RB-5tx">
-                                <rect key="frame" x="8" y="7" width="50" height="50"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="대기시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aex-Px-M5p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대기시간" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aex-Px-M5p">
                                 <rect key="frame" x="206" y="14" width="82" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-Jy-Pyj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RMz-Jy-Pyj">
                                 <rect key="frame" x="66" y="7" width="91" height="50"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="33"/>
                                 <color key="textColor" red="0.46274509803921571" green="0.6470588235294118" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-yg-cUp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRe-yg-cUp">
                                 <rect key="frame" x="196" y="30" width="92" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
                                 <color key="textColor" red="0.46274509803921571" green="0.6470588235294118" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bus_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="DhC-RB-5tx">
+                                <rect key="frame" x="8" y="7" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5v4-X1-ot7"/>
+                                    <constraint firstAttribute="width" constant="50" id="Xkf-SE-xYi"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CRe-yg-cUp" firstAttribute="top" secondItem="uhZ-Jh-Xyw" secondAttribute="top" constant="30" id="2tp-S8-Ox5"/>
+                            <constraint firstAttribute="centerX" secondItem="RMz-Jy-Pyj" secondAttribute="centerX" constant="40.5" id="8DA-WW-iGn"/>
+                            <constraint firstItem="DhC-RB-5tx" firstAttribute="top" secondItem="RMz-Jy-Pyj" secondAttribute="top" id="8Ho-57-TL8"/>
+                            <constraint firstAttribute="bottom" secondItem="DhC-RB-5tx" secondAttribute="bottom" constant="9" id="AfV-Eh-JNq"/>
+                            <constraint firstAttribute="centerY" secondItem="RMz-Jy-Pyj" secondAttribute="centerY" constant="1" id="Ei2-ie-vml"/>
+                            <constraint firstItem="CRe-yg-cUp" firstAttribute="top" secondItem="Aex-Px-M5p" secondAttribute="bottom" constant="-5" id="OeS-Wf-D8t"/>
+                            <constraint firstItem="Aex-Px-M5p" firstAttribute="top" secondItem="uhZ-Jh-Xyw" secondAttribute="top" constant="14" id="RMA-A9-1hZ"/>
+                            <constraint firstAttribute="trailing" secondItem="CRe-yg-cUp" secondAttribute="trailing" constant="16" id="TtM-Ri-k4p"/>
+                            <constraint firstItem="DhC-RB-5tx" firstAttribute="leading" secondItem="uhZ-Jh-Xyw" secondAttribute="leading" constant="8" id="VVz-St-TMa"/>
+                            <constraint firstItem="RMz-Jy-Pyj" firstAttribute="bottom" secondItem="DhC-RB-5tx" secondAttribute="bottom" id="XcH-d6-dBT"/>
+                            <constraint firstAttribute="bottom" secondItem="CRe-yg-cUp" secondAttribute="bottom" constant="17" id="aCF-Mw-5kF"/>
+                            <constraint firstItem="DhC-RB-5tx" firstAttribute="top" secondItem="uhZ-Jh-Xyw" secondAttribute="top" constant="7" id="cgB-oZ-Kco"/>
+                            <constraint firstItem="CRe-yg-cUp" firstAttribute="leading" secondItem="RMz-Jy-Pyj" secondAttribute="trailing" constant="39" id="eDd-c7-bPS"/>
+                            <constraint firstItem="RMz-Jy-Pyj" firstAttribute="leading" secondItem="DhC-RB-5tx" secondAttribute="trailing" constant="8" symbolic="YES" id="eu7-zA-N81"/>
+                            <constraint firstAttribute="trailing" secondItem="Aex-Px-M5p" secondAttribute="trailing" constant="16" id="jot-zA-ehO"/>
+                            <constraint firstItem="Aex-Px-M5p" firstAttribute="leading" secondItem="RMz-Jy-Pyj" secondAttribute="trailing" constant="49" id="xRF-Mh-fq0"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AfV-Eh-JNq"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -48,6 +75,11 @@
                     <constraint firstItem="uhZ-Jh-Xyw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="mV2-aG-Lzd"/>
                     <constraint firstItem="uhZ-Jh-Xyw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pq0-AT-owe"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="mV2-aG-Lzd"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
             <connections>

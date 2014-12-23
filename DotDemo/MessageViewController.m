@@ -26,39 +26,26 @@
 
 @implementation MessageViewController
 
-@synthesize contactName, messageLabel, conversationView, messageBoxView, sendButton;
+@synthesize conversationView, messageTextView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    messageBoxView.layer.cornerRadius = 6.0f;
-    messageBoxView.layer.masksToBounds = true;
-    
-    sendButton.layer.cornerRadius = 6.0f;
-    sendButton.layer.masksToBounds = true;
-    
     manager = [BLEManager sharedInstance];
+    manager.delegate = self;
     [manager startScan];
     conversationView.delegate = self;
     conversationView.dataSource = self;
     
-    UITapGestureRecognizer *keyboardTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openKeyboard)];
-    keyboardTap.numberOfTouchesRequired = 1;
-    keyboardTap.numberOfTapsRequired = 1;
-    [messageBoxView addGestureRecognizer:keyboardTap];
     
     [self.conversationView registerNib:[UINib nibWithNibName:@"MessageItemCell" bundle:nil] forCellReuseIdentifier:@"messagecell"];
     
     if(contact != nil) {
-        contactName.text = contact.username;
+        [self.navigationController setNavigationBarHidden:false];
+        self.navigationItem.title = contact.username;
     }
     
     account = [Account sharedInstance];
-    if(account == nil) {
-        NSLog(@"account is nil at messaging");
-    } else {
-        NSLog(@"Account is not nil at messaging with username: %@ and user_id: %@", account.user_name, account.user_id);
-    }
     
     messagesAPI = [[DotRequestMessagesAPI alloc] init];
     messagesAPI.delegate = self;
@@ -73,27 +60,38 @@
     
     [SIOSocket socketWithHost:URL  response: ^(SIOSocket *socket) {
         self->socketio = socket;
-//        NSMutableDictionary *userData = [[NSMutableDictionary alloc] init];
-//        [userData setObject:account.user_name forKey:@"user_name"];
-//        [userData setObject:account.user_id forKey:@"user_id"];
-//        [socket emit:@"join" args:@[userData]];
     }];
-    
-    socketio.onConnect = ^(){
-        
-    };
-    
     
     [messagesAPI requestMessagesWith:account.user_id AndContact:contact.userid WithSession:account.session_id];
     
     keyboardVC = [self.storyboard instantiateViewControllerWithIdentifier:@"keyboard"];
     keyboardVC.delegate = self;
     
-//    [NSTimer scheduledTimerWithTimeInterval:2.0
-//                                     target:self
-//                                   selector:@selector(fetchNewMessage)
-//                                   userInfo:nil
-//                                    repeats:true];
+    UITapGestureRecognizer *keyboardTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openKeyboard)];
+    keyboardTap.numberOfTapsRequired = 1;
+    keyboardTap.numberOfTouchesRequired = 1;
+    [messageTextView addGestureRecognizer:keyboardTap];
+    
+    UISwipeGestureRecognizer *swipeSendMessage = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sendMessage)];
+    swipeSendMessage.direction = UISwipeGestureRecognizerDirectionRight;
+    swipeSendMessage.numberOfTouchesRequired = 1;
+    [messageTextView addGestureRecognizer:swipeSendMessage];
+    
+    UISwipeGestureRecognizer *connectBluetooth = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(connectWithBlE)];
+    connectBluetooth.numberOfTouchesRequired = 2;
+    connectBluetooth.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:connectBluetooth];
+    
+}
+
+- (void)bleDidConnectWithDevice
+{
+     AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+}
+
+- (void)connectWithBlE
+{
+    [manager startScan];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -105,15 +103,18 @@
     
     [socketio on:@"new_msg" callback:^(NSArray *args) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            NSDictionary *receivedMessage = [args objectAtIndex:0];
-            Message *newMessage = [[Message alloc] init];
-            newMessage.senderName = [receivedMessage objectForKey:@"sender_id"];
-            newMessage.messageContent = [receivedMessage objectForKey:@"message"];
-            [messagelist addObject:newMessage];
-            [conversationView reloadData];
-            [conversationView layoutIfNeeded];
-            NSLog(@"%@", args);
-  //          [self scrollToBottom];
+            if(args.count > 0) {
+                NSDictionary *receivedMessage = [args objectAtIndex:0];
+                Message *newMessage = [[Message alloc] init];
+                newMessage.senderName = [receivedMessage objectForKey:@"sender_id"];
+                newMessage.messageContent = [receivedMessage objectForKey:@"message"];
+                [messagelist addObject:newMessage];
+                [manager writeData:@"각"];
+                [conversationView reloadData];
+                [conversationView layoutIfNeeded];
+                NSLog(@"%@", args);
+                [self scrollToBottom];
+            }
         });
     }];
 
@@ -121,14 +122,13 @@
 
 - (void)scrollToBottom
 {
-//    NSInteger rowNumbers = [conversationView numberOfRowsInSection:0];
-//    [conversationView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:rowNumbers inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [conversationView setContentOffset:CGPointMake(0, conversationView.contentSize.height-conversationView.frame.size.height) animated:YES];
 }
 
 - (void)keyboardViewDidFinishInput:(NSString *)value WithKey:(NSString *)key
 {
     if([key isEqualToString:MESSAGE_KEY]) {
-        messageLabel.text = value;
+        messageTextView.text = value;
     }
 }
 
@@ -164,19 +164,22 @@
     //First join
     
     //Then send message
-    if(messageLabel.text != nil) {
+    if(messageTextView.text != nil) {
         NSMutableDictionary *messageData = [[NSMutableDictionary alloc] init];
         [messageData setObject:contact.userid forKey:@"contact_id"];
         [messageData setObject:account.user_id forKey:@"user_id"];
         [messageData setObject:account.user_name forKey:@"user_name"];
         [messageData setObject:contact.username forKey:@"contact_name"];
-        [messageData setObject:messageLabel.text forKey:@"message"];
+        [messageData setObject:messageTextView.text forKey:@"message"];
         
         Message *mySendMessage = [[Message alloc] init];
         mySendMessage.senderName = account.user_name;
-        mySendMessage.messageContent = messageLabel.text;
+        mySendMessage.messageContent = messageTextView.text;
         [messagelist addObject:mySendMessage];
         [conversationView reloadData];
+        [self scrollToBottom];
+        
+        [messageTextView resignFirstResponder];
 
         [socketio emit:@"new_msg" args:@[messageData]];
     }

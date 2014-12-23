@@ -15,6 +15,7 @@
 #import "LoginViewController.h"
 
 @interface ContactViewController : UIViewController  <UITableViewDataSource, UITableViewDelegate, DotRequestAllUsersDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *contactsmenu;
 
 @end

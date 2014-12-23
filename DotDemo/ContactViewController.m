@@ -21,6 +21,7 @@
     NSMutableArray *contactlist;
     Account *account;
     DotRequestAllUsersAPI *userRequestAPI;
+    BOOL didRequestAllUsers;
 }
 
 @end
@@ -43,6 +44,8 @@
     contactsmenu.delegate = self;
     contactsmenu.dataSource = self;
     
+    didRequestAllUsers = false;
+    
     [self checkAuthentication];
     // Do any additional setup after loading the view.
 }
@@ -63,16 +66,22 @@
         LoginViewController *loginVC = [self.storyboard instantiateViewControllerWithIdentifier:@"login"];
         [self presentViewController:loginVC animated:true completion:nil];
     } else {
-        [userRequestAPI requestAllUsers:account.session_id];
+        [self.navigationController setNavigationBarHidden:false];
+        self.navigationItem.title = @"Contacts";
+        if(!didRequestAllUsers) {
+            [userRequestAPI requestAllUsers:account.session_id];
+        }
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MessageViewController *messageVC = [storyboard instantiateViewControllerWithIdentifier:@"messages"];
-    [messageVC setContact:[contactlist objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:messageVC animated:true];
+    if(contactlist.count > 0 && contactlist.count > indexPath.row) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        MessageViewController *messageVC = [storyboard instantiateViewControllerWithIdentifier:@"messages"];
+        [messageVC setContact:[contactlist objectAtIndex:indexPath.row]];
+        [self.navigationController pushViewController:messageVC animated:true];
+    }
  //   [self presentViewController:messageVC animated:true completion:nil];
 }
 
@@ -84,18 +93,21 @@
         NSArray *incomingData = [data objectForKey:@"contacts"];
         for(int i = 0; i < incomingData.count; i++) {
             NSDictionary *thisContact = [incomingData objectAtIndex:i];
-            NSString *name = [thisContact objectForKey:@"username"];
+            NSString *username = [thisContact objectForKey:@"username"];
             NSString *userid = [thisContact objectForKey:@"userid"];
+            NSString *name = [thisContact objectForKey:@"name"];
             Contact *newContact = [[Contact alloc] init];
-            newContact.username = name;
+            newContact.username = username;
             newContact.userid = userid;
+            newContact.name = name;
             [contactlist addObject:newContact];
-            NSLog(@"Contact name: %@ id: %@", name, userid);
+            NSLog(@"Contact name '%@' with id: '%@' and name '%@' ", username, userid, name);
             
         }
         [self.contactsmenu reloadData];
+        didRequestAllUsers = true;
     } else {
-        [userRequestAPI requestAllUsers:account.session_id];
+    //    [userRequestAPI requestAllUsers:account.session_id];
     }
 }
 
@@ -113,7 +125,7 @@
     if(cell == nil) {
         cell = [[ContactItemCell alloc] init];
     }
-    cell.contactName.text = myContact.username;
+    cell.contactName.text = myContact.name;
     if([myContact.username isEqualToString:@"eric"]) {
         cell.contactImage.image = [UIImage imageNamed:ERIC_ICON];
     }

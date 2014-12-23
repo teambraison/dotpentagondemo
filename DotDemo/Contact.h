@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString * username;
 @property (nonatomic, strong) NSString * userid;
+@property (nonatomic, strong) NSString * name;
 
 @end
